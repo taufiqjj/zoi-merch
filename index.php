@@ -295,7 +295,6 @@ $result = $koneksi->query($sql);
           <label class="block text-sm font-medium">Nama</label>
           <input type="text" name="name" required class="w-full border rounded p-2" />
         </div>
-        <!-- Rating Bintang -->
         <div>
           <label class="block text-sm font-medium mb-1">Rating</label>
           <div id="star-rating" class="flex space-x-1 cursor-pointer">
