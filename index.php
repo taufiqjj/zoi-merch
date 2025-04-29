@@ -25,7 +25,8 @@ $result = $koneksi->query($sql);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Page</title>
+  <title>ZOI MERCH</title>
+  <link rel="icon" type="image/png" href="image/icon-zoi.png" />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
@@ -34,6 +35,7 @@ $result = $koneksi->query($sql);
     defer></script>
   <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="bg-[#bgbgbg]">
@@ -351,8 +353,46 @@ $result = $koneksi->query($sql);
     </section>
   </main>
 
-  <footer class="py-4 flex border-t-solid">
-    <div class="flex align mx-auto text-center">
+  <footer class="bg-white text-gray-800 border-t mt-10">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+      <!-- Kolom 1: Logo dan Deskripsi -->
+      <div class="flex items-start gap-4">
+        <div>
+          <h2 class="text-lg font-semibold">ZOI MERCH</h2>
+          <p class="mt-2 text-sm">
+            Zoi Merch merupakan Vendor Konveksi
+          </p>
+        </div>
+      </div>
+
+      <!-- Kolom 2: Kontak -->
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Hubungi Kami</h2>
+        <p>Ajibarang Kulon, Kec. Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163</p>
+        <p class="text-sm text-blue-600">zoi.purwokerto@gmail.com</p>
+        <p>0851-5718-6003</p>
+      </div>
+
+      <!-- Kolom 3: Ikuti Kami -->
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Ikuti Kami</h2>
+        <div class="flex space-x-3">
+          <a href="https://www.facebook.com/dani.s.konveksi" class="bg-blue-700 text-white p-3 rounded-md">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/zoimerchandapparel" class="bg-sky-500 text-white p-3 rounded-md">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/62851-5718-6003" class="bg-red-600 text-white p-3 rounded-md">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="flex justify-center mb-4">
       <img
         src="icon/zoi.svg"
         alt=""
