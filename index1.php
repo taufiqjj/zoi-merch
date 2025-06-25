@@ -1,15 +1,6 @@
 <?php
 include 'koneksi.php';
 
-$produkList = [];
-$result = $koneksi->query("SELECT * FROM produk ORDER BY id DESC");
-
-if ($result && $result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-    $produkList[] = $row;
-  }
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = htmlspecialchars($_POST['name']);
   $rate = (int) $_POST['rate'];
@@ -27,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $sql = "SELECT * FROM testimoni ORDER BY id DESC";
 $result = $koneksi->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,20 +35,15 @@ $result = $koneksi->query($sql);
     defer></script>
   <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="bg-[#bgbgbg]">
-  <header class="bg-[#ffffff] text-white py-3 fixed top-0 w-full z-10">
+  <header class="bg-[#bgbgbg] text-white py-3">
     <div
-      class="container mx-auto flex justify-between items-center px-4 md:px-14">
-      <!-- Logo -->
-      <img src="icon/zoi.svg" alt="Logo" class="w-[140px] lg:w-[180px]" />
-
-      <!-- Desktop Menu -->
-      <nav class="hidden md:block">
+      class="container mx-auto flex justify-between items-center px-14 py-0">
+      <img src="icon/zoi.svg" alt="Logo" style="width: 180px" />
+      <nav>
         <ul class="flex space-x-4 text-black items-center gap-1">
           <li><a href="#beranda" class="hover:underline">Beranda</a></li>
           <li><a href="#tentang-kami" class="hover:underline">Tentang</a></li>
@@ -70,89 +57,52 @@ $result = $koneksi->query($sql);
           </li>
         </ul>
       </nav>
-
-      <!-- Hamburger Menu Button (Mobile) -->
-      <div class="md:hidden">
-        <button id="menu-btn" class="focus:outline-none">
-          <svg
-            class="w-6 h-6 text-black"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div
-      id="mobile-menu"
-      class="md:hidden hidden px-6 pb-4 bg-[#ffffff] text-black">
-      <a href="#beranda" class="block py-2 border-b">Beranda</a>
-      <a href="#tentang-kami" class="block py-2 border-b">Tentang</a>
-      <a href="#keunggulan" class="block py-2 border-b">Keunggulan</a>
-      <a href="#produk" class="block py-2 border-b">Produk</a>
-      <a href="#ulasan" class="block py-2 border-b">Ulasan</a>
-      <a
-        href="#cta"
-        class="block py-2 text-white bg-black rounded text-center mt-2">Kontak Kami</a>
     </div>
   </header>
 
   <main>
-    <!-- hero -->
     <section
       id="beranda"
-      class="text-white py-20 md:py-32 lg:py-52 bg-cover bg-center sm:h-screen flex items-center"
+      class="text-white py-52 bg-cover bg-center h-full"
       style="background-image: url('image/Hero.jpg')">
-      <div class="container mx-auto text-left px-4 md:px-8 lg:pl-24 pt-8">
-        <p class="text-sm md:text-base">Apapun Kebutuhan Anda,</p>
-        <h2 class="text-lg md:text-3xl lg:text-4xl font-bold mb-8 md:mb-12">
-          Konsultasikan dengan ZOI!
-        </h2>
+      <div class="container mx-auto text-left px-4 pl-24">
+        <p class="">Apapun Kebutuhan Anda,</p>
+        <h2 class="text-4xl font-bold mb-12">Konsultasikan dengan ZOI!</h2>
         <a
-          href="https://wa.me/6285779714331"
-          class="bg-white/60 px-4 md:px-6 py-2 rounded font-bold hover:bg-gray-200 text-white inline-block text-sm font-bold">Hubungi Kami Sekarang!</a>
+          href="https://wa.me/6285156739512"
+          class="bg-white/60 px-6 py-2 rounded font-bold hover:bg-gray-200 text-white">Hubungi Kami Sekarang!</a>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section class="flex justify-center -mt-6 md:-mt-8 lg:-mt-12 px-4">
-      <div class="flex bg-white rounded-2xl divide-x-2 divide-dashed divide-[#454545] text-center shadow-2xl">
-        <div class="px-2 lg:px-20 p-4 md:p-6">
-          <h4 class="text-md lg:text-xl font-bold mb-2">10.000+</h4>
-          <p class="text-sm md:text-base">Pesanan Selesai</p>
+    <section id="beranda" class="flex justify-center -mt-12">
+      <div
+        class="grid grid-cols-3 divide-x-2 divide-dashed divide-[#454545] text-center rounded-2xl shadow-xl bg-white">
+        <div class="p-6 px-24">
+          <h4 class="text-xl font-bold mb-2">10.000+</h4>
+          <p>Pesanan Selesai</p>
         </div>
-        <lg class="px-2 lg:px-20 p-4 md:p-6">
-          <h4 class="text-md lg:text-xl font-bold mb-2">1.000+</h4>
-          <p class="text-sm">Kepuasan Pelanggan</p>
-        </lg text-centerv>
-        <div class="px-2 lg:px-20 p-4 md:p-6">
-          <h4 class="text-md lg:text-xl font-bold mb-2">11+</h4>
-          <p class="text-base">Tahun Produksi</p>
+        <div class="p-6">
+          <h4 class="text-xl font-bold mb-2">1.000+</h4>
+          <p>Kepuasan Pelanggan</p>
+        </div>
+        <div class="p-6">
+          <h4 class="text-xl font-bold mb-2">11+</h4>
+          <p>Tahun Produksi</p>
         </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section class="px-8 lg:px-20 mt-8 md:mt-12">
-      <div
-        class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <h4 class="text-xl md:text-2xl font-bold">
-          Partner Kami<br />Kekuatan Kami
-        </h4>
-        <p class="text-sm font-light max-w-md">
+    <section id="beranda" class="mx-20">
+      <div class="flex justify-between items-end">
+        <h4 class="text-2xl font-bold">Partner Kami<br />Kekuatan Kami</h4>
+        <p class="text-sm font-light">
           Setiap langkah kami didukung oleh partner yang terpercaya.
           <br />Kolaborasi ini membawa nilai nyata untuk semua pihak
         </p>
       </div>
-      <div class="mt-4">
+      <div class="mt-2">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -184,38 +134,33 @@ $result = $koneksi->query($sql);
       </div>
     </section>
 
-    <!-- tentang-kami -->
-    <section id="tentang-kami" class="mt-8 gap-20 px-8 lg:px-20">
-      <h4 class="text-2xl font-bold">Tentang Kami</h4>
-      <div class="flex flex-col-reverse sm:flex sm:flex-row">
-        <div class="w-50%">
-          <p class="text-xl font-light mt-4">
-            Kami adalah vendor konveksi yang berdedikasi untuk menyediakan
-            produk berkualitas tinggi dengan sentuhan keahlian terbaik.
-            Didirikan dengan semangat inovasi dan dedikasi, perjalanan kami
-            dimulai pada tahun 2014 bersama mitra-mitra penjahit berbakat yang
-            memiliki pengalaman luas di bidangnya.
-            <br />
-            <br />Selama lebih dari satu dekade, kami telah berhasil
-            menyelesaikan puluhan ribu pcs berbagai jenis pakaian, mulai dari
-            kaos, PDH (Pakaian Dinas Harian), hingga blazer. Keberhasilan ini
-            tidak lepas dari kerja sama erat dengan mitra-mitra penjahit kami
-            yang memastikan setiap jahitan memiliki kualitas dan presisi tinggi.
-          </p>
-        </div>
-        <div class="w-full bg-white rounded-2xl shadow-xl">
-          <img src="image/Jahit.png" class="p-8" />
-        </div>
+    <section id="tentang-kami" class="mx-20 mt-8 flex gap-20">
+      <div class="w-50%">
+        <h4 class="text-2xl font-bold">Tentang Kami</h4>
+        <p class="text-xl font-light mt-4">
+          Kami adalah vendor konveksi yang berdedikasi untuk menyediakan
+          produk berkualitas tinggi dengan sentuhan keahlian terbaik.
+          Didirikan dengan semangat inovasi dan dedikasi, perjalanan kami
+          dimulai pada tahun 2014 bersama mitra-mitra penjahit berbakat yang
+          memiliki pengalaman luas di bidangnya.
+          <br />
+          <br />Selama lebih dari satu dekade, kami telah berhasil
+          menyelesaikan puluhan ribu pcs berbagai jenis pakaian, mulai dari
+          kaos, PDH (Pakaian Dinas Harian), hingga blazer. Keberhasilan ini
+          tidak lepas dari kerja sama erat dengan mitra-mitra penjahit kami
+          yang memastikan setiap jahitan memiliki kualitas dan presisi tinggi.
+        </p>
       </div>
-
+      <div class="w-full bg-white rounded-2xl shadow-xl">
+        <img src="image/Jahit.png" class="p-8" />
+      </div>
     </section>
 
-    <!-- keunggulan -->
     <section
       id="keunggulan"
-      class="px-8 py-8 bg-[#373737] flex flex-col sm:flex sm:flex-row gap-4 lg:gap-20 items-center mt-8">
+      class="px-20 py-8 bg-[#373737] flex gap-20 items-center mt-8">
       <div class="flex bg-white/10% rounded-2xl shadow-xl">
-        <img src="image/baju.png" class="p-4 w-[900px]" />
+        <img src="image/baju.png" class="p-8 w-[900px]" />
       </div>
       <div class="w-full text-white">
         <h4 class="text-2xl font-bold">Kenapa Harus Kami?</h4>
@@ -242,24 +187,69 @@ $result = $koneksi->query($sql);
       </div>
     </section>
 
-    <!-- produk -->
-    <section id="produk" class="px-8 lg:px-20 mt-8">
+    <section id="produk" class="px-20 mt-8">
       <h4 class="text-center text-2xl font-bold pb-4">Produk Kami</h4>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 justify-center">
-        <?php foreach ($produkList as $produk): ?>
-          <div class="bg-white shadow-xl p-3 rounded-xl flex flex-col items-center w-full h-[280px]">
-            <img
-              src="<?= htmlspecialchars($produk['gambar']) ?>"
-              alt="<?= htmlspecialchars($produk['nama']) ?>"
-              class="shadow-inner p-2 shadow-[#373737]/50 w-full h-[180px] object-contain rounded" />
-            <h4 class="text-base font-semibold text-center mt-2 truncate w-full"><?= htmlspecialchars($produk['nama']) ?></h4>
-          </div>
-        <?php endforeach; ?>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/PDH.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">PDH</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Lanyard.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Lanyard</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Id Card.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Id Card</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Kaos.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Kaos</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Rompi.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Rompi</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Blazzer.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Blazzer</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Hoodie.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Hoodie</h4>
+        </div>
+        <div class="bg-white shadow-xl p-3 rounded-xl">
+          <img
+            src="image/product/Polo.png"
+            alt="pdh"
+            class="shadow-inner p-2 shadow-[#373737]/50" />
+          <h4 class="text-lg font-bold text-center py-3">Polo</h4>
+        </div>
       </div>
     </section>
 
-    <!-- ulasan -->
-    <section id="ulasan" class="mt-8 px-8 lg:px-20">
+    <section id="ulasan" class="mt-8 mx-20">
       <div class="flex justify-between items-end">
         <h4 class="text-2xl font-bold">Ulasan Pelanggan</h4>
       </div>
@@ -296,10 +286,9 @@ $result = $koneksi->query($sql);
         <?php endif; ?>
         </div>
       </div>
-      </div>
     </section>
 
-    <section class="mt-8 mx-8 md:mx-20 bg-white p-6 rounded-lg shadow">
+    <section class="mt-8 mx-20 bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-bold mb-4">Tambah Testimoni</h2>
       <form action="index.php" method="POST" class="space-y-4">
         <div>
@@ -321,11 +310,11 @@ $result = $koneksi->query($sql);
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M11.48 3.499a.562.562 0 011.04 0l2.067 4.193a.563.563 0 00.424.307
-                    l4.624.672a.562.562 0 01.312.957l-3.346 3.263a.562.562 0 00-.162.498
-                    l.79 4.604a.563.563 0 01-.817.593l-4.133-2.174a.563.563 0 00-.523 0
-                    l-4.133 2.174a.563.563 0 01-.817-.593l.79-4.604a.562.562 0 00-.162-.498
-                    L2.478 9.628a.562.562 0 01.312-.957l4.624-.672a.562.562 0 00.424-.307
-                    l2.067-4.193z" />
+                  l4.624.672a.562.562 0 01.312.957l-3.346 3.263a.562.562 0 00-.162.498
+                  l.79 4.604a.563.563 0 01-.817.593l-4.133-2.174a.563.563 0 00-.523 0
+                  l-4.133 2.174a.563.563 0 01-.817-.593l.79-4.604a.562.562 0 00-.162-.498
+                  L2.478 9.628a.562.562 0 01.312-.957l4.624-.672a.562.562 0 00.424-.307
+                  l2.067-4.193z" />
               </svg>
             <?php endfor; ?>
           </div>
@@ -342,40 +331,36 @@ $result = $koneksi->query($sql);
       </form>
     </section>
 
-    <!-- CTA -->
     <section
       id="cta"
-      class="px-8 mt-8 flex justify-around items-end"
+      class="mt-8 flex justify-around items-end"
       style="background-image: url('image/CTA.png')">
-      <div class="py-20 lg:py-28 text-white">
+      <div class="py-28 text-white">
         <h4 class="text-2xl font-extrabold">
           Percayakan Kebutuhan Anda pada Kami!
         </h4>
         <p>Hubungi Kami untuk Penawaran Spesial</p>
         <button
           class="mt-8 py-2 px-4 rounded-md bg-white text-black flex gap-2 font-bold">
-          <a href="https://wa.me/6285779714331" class="flex">
+          <a href="https://wa.me/6285156739512" class="flex">
             <img src="icon/wa.png" />
             <p>Klik Disini!</p>
           </a>
         </button>
       </div>
-      <img src="image/Vector.png" class="w-[322px] h-[322px] hidden sm:block" alt="" />
+      <img src="image/Vector.png" class="w-[322px] h-[322px]" alt="" />
     </section>
   </main>
 
   <footer class="bg-white text-gray-800 border-t mt-10">
-    <div
-      class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
       <!-- Kolom 1: Logo dan Deskripsi -->
       <div class="flex items-start gap-4">
         <div>
           <h2 class="text-lg font-semibold">ZOI MERCH</h2>
-          <p class="mt-2 text-sm text-justify">
-            ZOI Merch adalah perusahaan konveksi dan merchandise yang berdiri
-            sejak 2014, berkomitmen menyediakan produk berkualitas tinggi
-            dengan desain kreatif dan bahan terbaik untuk individu, komunitas,
-            perusahaan, dan event besar.
+          <p class="mt-2 text-sm">
+            Zoi Merch merupakan Vendor Konveksi
           </p>
         </div>
       </div>
@@ -383,45 +368,36 @@ $result = $koneksi->query($sql);
       <!-- Kolom 2: Kontak -->
       <div>
         <h2 class="text-lg font-semibold mb-2">Hubungi Kami</h2>
-        <p>
-          Ajibarang Kulon, Kec. Ajibarang, Kabupaten Banyumas, Jawa Tengah
-          53163
-        </p>
+        <p>Ajibarang Kulon, Kec. Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163</p>
         <p class="text-sm text-blue-600">zoi.purwokerto@gmail.com</p>
-        <p>0857-7971-4331</p>
+        <p>0851-5718-6003</p>
       </div>
 
       <!-- Kolom 3: Ikuti Kami -->
       <div>
         <h2 class="text-lg font-semibold mb-2">Ikuti Kami</h2>
         <div class="flex space-x-3">
-          <a
-            href="https://www.facebook.com/dani.s.konveksi"
-            class="bg-blue-700 text-white p-3 rounded-md">
+          <a href="https://www.facebook.com/dani.s.konveksi" class="bg-blue-700 text-white p-3 rounded-md">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a
-            href="https://www.instagram.com/zoimerchandapparel"
-            class="bg-sky-500 text-white p-3 rounded-md">
+          <a href="https://www.instagram.com/zoimerchandapparel" class="bg-sky-500 text-white p-3 rounded-md">
             <i class="fab fa-instagram"></i>
           </a>
-          <a
-            href="https://wa.me/6285779714331"
-            class="bg-red-600 text-white p-3 rounded-md">
+          <a href="https://wa.me/62851-5718-6003" class="bg-red-600 text-white p-3 rounded-md">
             <i class="fab fa-whatsapp"></i>
           </a>
         </div>
       </div>
+
     </div>
 
     <div class="flex justify-center mb-4">
       <img
         src="icon/zoi.svg"
         alt=""
-        class="align-center items-center text-center w-40 lg:w-60" />
+        class="align-center items-center text-center" />
     </div>
   </footer>
-
   <script>
     const stars = document.querySelectorAll("#star-rating svg");
     const rateInput = document.getElementById("rate");
@@ -441,59 +417,27 @@ $result = $koneksi->query($sql);
       });
     });
 
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
 
     document.addEventListener("DOMContentLoaded", function() {
       new Swiper(".mySwiper", {
-        loop: true,
+        slidesPerView: 5,
         spaceBetween: 8,
+        loop: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: true,
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          640: {
-            slidesPerView: 2,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          1024: {
-            slidesPerView: 5,
-          },
         },
       });
     });
 
     document.addEventListener("DOMContentLoaded", function() {
       new Swiper(".ulasanSwiper", {
+        slidesPerView: 4,
         spaceBetween: 8,
         loop: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: true,
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          640: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 4,
-          },
         },
       });
     });
